@@ -6,4 +6,6 @@ export interface Person {
     getAge():number;
     getNick():string;
     isEmployee():boolean;
+
+    getDump():string;
 }

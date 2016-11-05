@@ -25,6 +25,12 @@ class AppStateWrapper implements AppState {
         return this.getPersons().findIndex( (p) => p.id == id)
     }
 
+    public getPersonDump() {
+        return "[" +
+            this.getPersons().map( (p) => p.getDump() ).join(",\n") +
+            "]\n"
+    }
+
     // This class also has a mutator method, for creating a new
     // version of the application state.
     public mutate(changes:AppStateChange) {
@@ -54,6 +60,10 @@ class PersonWrapper implements Person {
     public getAge() { return this.state.get("age"); }
     public getNick() { return this.state.get("nick"); }
     public isEmployee() { return this.state.get("employee"); }
+
+    public getDump() {
+        return JSON.stringify(this.state.toObject());
+    }
 }
 
 function wrapRawPerson(rawPerson):Person {

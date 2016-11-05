@@ -1,8 +1,11 @@
 // The file containes Redux reducer function
 
 import { AppStateChange, AppState } from './state';
-import { wrapRawAppState, wrapRawPersons } from './wrappers';
+import { PersonList, wrapRawAppState, wrapRawPersons } from './wrappers';
 import { Action, REPLACE_PERSONS, DELETE_PERSON } from './actions';
+
+const appendDump = (state:AppState, persons:PersonList) =>
+      state.getDump() + "===New data:===\n" + state.getPersonDump();
 
 // This is the reducer function
 export function getNextState(state:AppState, action:Action):AppState {
@@ -10,7 +13,7 @@ export function getNextState(state:AppState, action:Action):AppState {
         const persons = wrapRawPersons(require('../../seed-data/persons'));
         const result:AppState = wrapRawAppState({
             persons,
-            dump: "No data dump yet."
+            dump: ""
         });
         return result;
     }
@@ -22,8 +25,11 @@ export function getNextState(state:AppState, action:Action):AppState {
         });
     case DELETE_PERSON:
         const index = state.getPersonIndex(action.id);
+        const persons = state.getPersons().delete(index);
+        const dump = appendDump(state, persons);
         return state.mutate({
-            persons: state.getPersons().delete(index)
+            persons,
+            dump
         });
     default:
         return state;

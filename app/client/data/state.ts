@@ -8,9 +8,10 @@ export interface AppStateChange {
 
 export interface AppState {
     getPersons(): PersonList;
-    getPersonIndex(id:string): number;
-
     getDump(): string;
 
     mutate(change:AppStateChange):AppState;
+
+    getPersonIndex(id:string): number;
+    getPersonDump(): string;
 }
