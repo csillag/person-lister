@@ -5,7 +5,7 @@ import { DataDump, DataDumpProps } from './DataDump';
 
 function mapStateToProps(state:AppState):DataDumpProps {
     return {
-        dump: state.getDump(),
+        dump: state.getDataDump(),
     }
 }
 

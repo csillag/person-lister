@@ -5,7 +5,7 @@ import { PersonList, wrapRawAppState, wrapRawPersons } from './wrappers';
 import { Action, REPLACE_PERSONS, DELETE_PERSON } from './actions';
 
 const appendDump = (state:AppState, persons:PersonList) =>
-      state.getDump() + "===New data:===\n" + state.getPersonDump();
+      state.getDataDump() + "===New data:===\n" + state.getPersonDump();
 
 // This is the reducer function
 export function getNextState(state:AppState, action:Action):AppState {

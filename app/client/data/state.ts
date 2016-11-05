@@ -8,7 +8,7 @@ export interface AppStateChange {
 
 export interface AppState {
     getPersons(): PersonList;
-    getDump(): string;
+    getDataDump(): string;
 
     mutate(change:AppStateChange):AppState;
 
