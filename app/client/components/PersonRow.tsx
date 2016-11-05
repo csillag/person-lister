@@ -4,9 +4,20 @@ import { Person } from '../data/Person';
 
 export interface PersonRowProps {
     person: Person;
+    delete?(id:string):void;
 }
 
 export class PersonRow extends React.Component<PersonRowProps,{}> {
+
+    constructor(props) {
+        super(props);
+        this.onClick = this.onClick.bind(this);
+    }
+
+    onClick(e) {
+        this.props.delete(this.props.person.getId());
+    }
+
     render() {
         const person = this.props.person;
         return (<tr>
@@ -19,7 +30,9 @@ export class PersonRow extends React.Component<PersonRowProps,{}> {
                     readOnly="true"
                 /></td>
             <td>
-                <a href="#">Delete</a>
+                <a href="#" onClick={ this.onClick }>
+                    Delete
+                </a>
             </td>
         </tr>);
     }

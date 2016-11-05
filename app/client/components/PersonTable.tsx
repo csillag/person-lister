@@ -26,7 +26,11 @@ export class PersonTable extends React.Component<PersonTableProps,{}> {
                 </thead>
                 <tbody>
                 { this.props.persons.map((person) => (
-                    <PersonRow person={person} key={person.getId()} />
+                    <PersonRow
+                        person={person}
+                        key={person.getId()}
+                        delete={this.props.delete}
+                    />
                 )) }
                 </tbody>
                 </table>

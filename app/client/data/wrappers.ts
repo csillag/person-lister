@@ -20,6 +20,10 @@ class AppStateWrapper implements AppState {
 
     public getPersons() { return this.state.get("persons") }
 
+    public getPersonIndex(id: string) {
+        return this.getPersons().findIndex( (p) => p.id == id)
+    }
+
     // This class also has a mutator method, for creating a new
     // version of the application state.
     public mutate(changes:AppStateChange) {

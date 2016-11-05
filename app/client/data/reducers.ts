@@ -20,7 +20,10 @@ export function getNextState(state:AppState, action:Action):AppState {
             persons: action.data,
         });
     case DELETE_PERSON:
-        console.log("Should remove person", action.id);
+        const index = state.getPersonIndex(action.id);
+        return state.mutate({
+            persons: state.getPersons().delete(index)
+        });
     default:
         return state;
     }    
