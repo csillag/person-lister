@@ -1,7 +1,7 @@
 
 // === Our store supports the following actions ===
 
-export const EDIT_FOO = "EDIT_FOO";
+export const REPLACE_PERSONS = "REPLACE_PERSONS"
 
 // Generic type to describe all actions
 export interface Action {
@@ -11,6 +11,6 @@ export interface Action {
 
 // === Action generator functions ===
 
-export function editFoo(value:string):Action {
-    return { type: EDIT_FOO, data: value }
+export function replacePersons(persons):Action {
+    return { type: REPLACE_PERSONS, data: persons }
 }

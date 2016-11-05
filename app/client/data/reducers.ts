@@ -2,21 +2,21 @@
 
 import { AppStateChange, AppState } from './state';
 import { wrapRawAppState } from './wrappers';
-import { Action, EDIT_FOO } from './actions';
+import { Action, REPLACE_PERSONS } from './actions';
 
 // This is the reducer function
 export function getNextState(state:AppState, action:Action):AppState {
     if (!state) {
         const result:AppState = wrapRawAppState({
-            foo: "",
+            persons: [],
         });
         return result;
     }
 //    console.log("Action:", action);
     switch (action.type) {
-    case EDIT_FOO:
+    case REPLACE_PERSONS:
         return state.mutate({
-            foo: action.data,
+            persons: action.data,
         });
     default:
         return state;
