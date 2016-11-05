@@ -2,15 +2,12 @@ import * as React from 'react';
 import { Provider } from 'react-redux'
 
 import { store } from '../data/store';
-import { wrapRawPersons } from '../data/wrappers';
 
 import { GithubRibbon } from './GithubRibbon';
 import { TopControls } from './TopControls';
-import { PersonTable } from './PersonTable';
+import { PersonTableContainer } from './PersonTableContainer';
 
 import { DataDump } from './DataDump';
-
-const persons = wrapRawPersons(require('../../seed-data/persons'));
 
 // This React component represents the whole application
 export const App = () => (
@@ -23,7 +20,7 @@ export const App = () => (
 
                 <div className="col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3">
                     <TopControls />
-                    <PersonTable persons={persons} />
+                    <PersonTableContainer />
                     <DataDump dump="no dump yet" />
                 </div>
                 

@@ -6,7 +6,8 @@ import { PersonList } from '../data/wrappers';
 import { PersonRow } from './PersonRow';
 
 export interface PersonTableProps {
-    persons: PersonList;
+    persons?: PersonList;
+    delete?(id:string):void;
 }
 
 export class PersonTable extends React.Component<PersonTableProps,{}> {
