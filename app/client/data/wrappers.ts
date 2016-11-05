@@ -19,6 +19,7 @@ class AppStateWrapper implements AppState {
     }
 
     public getPersons() { return this.state.get("persons") }
+    public getDump() { return this.state.get("dump") }
 
     public getPersonIndex(id: string) {
         return this.getPersons().findIndex( (p) => p.id == id)

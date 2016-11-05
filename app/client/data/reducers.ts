@@ -9,7 +9,8 @@ export function getNextState(state:AppState, action:Action):AppState {
     if (!state) {
         const persons = wrapRawPersons(require('../../seed-data/persons'));
         const result:AppState = wrapRawAppState({
-            persons
+            persons,
+            dump: "No data dump yet."
         });
         return result;
     }
