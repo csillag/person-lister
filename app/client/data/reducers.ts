@@ -2,7 +2,7 @@
 
 import { AppStateChange, AppState } from './state';
 import { PersonList, wrapRawAppState, wrapRawPersons } from './wrappers';
-import { Action, REPLACE_PERSONS, DELETE_PERSON } from './actions';
+import { Action, REPLACE_PERSONS, DELETE_PERSON, SHOW_DIALOG } from './actions';
 
 const appendDump = (state:AppState, persons:PersonList) =>
       state.getDataDump() + "===New data:===\n" + state.getPersonDump();
@@ -13,7 +13,8 @@ export function getNextState(state:AppState, action:Action):AppState {
         const persons = wrapRawPersons(require('../../seed-data/persons'));
         const result:AppState = wrapRawAppState({
             persons,
-            dump: ""
+            dump: "",
+            adding: false,
         });
         return result;
     }
@@ -30,6 +31,10 @@ export function getNextState(state:AppState, action:Action):AppState {
         return state.mutate({
             persons,
             dump
+        });
+    case SHOW_DIALOG:
+        return state.mutate({
+            adding: true,
         });
     default:
         return state;

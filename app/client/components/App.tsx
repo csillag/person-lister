@@ -4,9 +4,10 @@ import { Provider } from 'react-redux'
 import { store } from '../data/store';
 
 import { GithubRibbon } from './GithubRibbon';
-import { TopControls } from './TopControls';
+import { TopControlsContainer } from './TopControlsContainer';
 import { PersonTableContainer } from './PersonTableContainer';
 import { DataDumpContainer } from './DataDumpContainer';
+import { AddDialogContainer } from './AddDialogContainer';
 
 // This React component represents the whole application
 export const App = () => (
@@ -18,9 +19,10 @@ export const App = () => (
                 </div>
 
                 <div className="col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3">
-                    <TopControls />
+                    <TopControlsContainer />
                     <PersonTableContainer />
                     <DataDumpContainer />
+                    <AddDialogContainer />
                 </div>
                 
 

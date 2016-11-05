@@ -1,7 +1,12 @@
 import * as React from 'react';
 
-import { AddButton } from './AddButton';
+import { AddButton, AddButtonProps } from './AddButton';
 
-export const TopControls = () => (
-        <div><AddButton /></div>
+export interface TopControlsProps extends AddButtonProps {
+}
+
+export const TopControls = (props:TopControlsProps) => (
+    <div>
+        <AddButton add={ props.add } />
+    </div>
 );
