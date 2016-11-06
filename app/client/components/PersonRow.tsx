@@ -26,7 +26,7 @@ export class PersonRow extends React.Component<PersonRowProps,{}> {
                 { person.name }
                 { person.job && ( <span><br />{person.job}</span> ) }
             </td>
-            <td>{ person.age }</td>
+            <td className="age-data">{ person.age }</td>
             <td>{ person.nick }</td>
                 <td><input
                     type="checkbox"
