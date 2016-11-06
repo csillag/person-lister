@@ -41,6 +41,7 @@ export function getNextState(state:AppState, action:Action):AppState {
             dataDump
         });
     case SHOW_DIALOG:
+        if (state.isAdding) return state;
         return mutateState(state, {
             isAdding: true,
             editedPerson: {
