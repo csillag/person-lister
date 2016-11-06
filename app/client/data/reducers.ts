@@ -4,6 +4,7 @@ import { Person } from './person';
 import { AppState } from './state';
 import {
     Action, REPLACE_PERSONS, DELETE_PERSON, SHOW_DIALOG,
+    EDIT_NAME, EDIT_JOB, EDIT_AGE, EDIT_NICK, SET_EMPLOYEE,
     DIALOG_OK, DIALOG_CANCEL
 } from './actions';
 
@@ -45,12 +46,42 @@ export function getNextState(state:AppState, action:Action):AppState {
         return mutateState(state, {
             isAdding: true,
             editedPerson: {
-                name: "Please enter name",
-                job: "Please enter job title",
-                age: "Please enter age",
-                nick: "Please enter nickname",
+                name: "",
+                job: "",
+                age: "",
+                nick: "",
                 employee: false,
             }
+        });
+    case EDIT_NAME:
+        return mutateState(state, {
+            editedPerson: Object.assign({}, state.editedPerson, {
+                name: action.data
+            })
+        });
+    case EDIT_JOB:
+        return mutateState(state, {
+            editedPerson: Object.assign({}, state.editedPerson, {
+                job: action.data
+            })
+        });
+    case EDIT_AGE:
+        return mutateState(state, {
+            editedPerson: Object.assign({}, state.editedPerson, {
+                age: action.data
+            })
+        });
+    case EDIT_NICK:
+        return mutateState(state, {
+            editedPerson: Object.assign({}, state.editedPerson, {
+                nick: action.data
+            })
+        });
+    case SET_EMPLOYEE:
+        return mutateState(state, {
+            editedPerson: Object.assign({}, state.editedPerson, {
+                employee: action.data
+            })
         });
     case DIALOG_OK:
         persons = state.persons.slice();
