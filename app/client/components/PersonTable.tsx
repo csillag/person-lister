@@ -4,8 +4,10 @@ import { Table } from 'react-bootstrap';
 
 import { Person } from '../data/Person';
 import { PersonRow } from './PersonRow';
+import { Spinner } from './Spinner';
 
 export interface PersonTableProps {
+    loading?: boolean;
     persons?: Person[];
     delete?(index:number):void;
 }
@@ -17,7 +19,8 @@ export class PersonTable extends React.Component<PersonTableProps,{}> {
         let index:number;
         return (
             <div id="main-table-wrapper">
-                <Table striped bordered condensed hover>
+                { persons
+                ? <Table striped bordered condensed hover>
                     <thead>
                         <tr>
                             <th>Name (job title)</th>
@@ -43,6 +46,10 @@ export class PersonTable extends React.Component<PersonTableProps,{}> {
                         })}
                     </ReactCSSTransitionGroup>
                 </Table>
+                : (this.props.loading
+                    ? <div id="loading-indicator">Loading...<Spinner /></div>
+                    : <div id="no-data-indicator">No data is available.</div>
+                ) }
             </div>
         )
     }

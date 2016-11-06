@@ -85,3 +85,9 @@
 .turnaround-enter.turnaround-enter-active {
     color: black;
 }
+
+#no-data-indicator,
+#loading-indicator {
+    text-align: center;
+    font-size: 200%;
+}

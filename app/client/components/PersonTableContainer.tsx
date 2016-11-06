@@ -7,6 +7,7 @@ import { PersonTable, PersonTableProps } from './PersonTable';
 
 function mapStateToProps(state:AppState):PersonTableProps {
     return {
+        loading: state.loading,
         persons: state.persons
     }
 }
