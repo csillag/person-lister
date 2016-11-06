@@ -14,29 +14,34 @@ export class PersonTable extends React.Component<PersonTableProps,{}> {
     render() {
         const persons = this.props.persons
         let index:number;
-        return (<div>
-            <Table striped bordered condensed hover>
-                <thead>
-                    <tr>
-                        <th>Name (job title)</th>
-                        <th>Age</th>
-                        <th>Nickname</th>
-                        <th>Employee</th>
-                        <th>&nbsp;</th>
-                    </tr>
-                </thead>
-                <tbody>
-                { persons.map((person) => {
-                    index = persons.indexOf(person);
-                    return (<PersonRow
-                        person={person}
-                        index={index}
-                        key={index}
-                        delete={this.props.delete}
-                    />)
-                })}
-                </tbody>
-            </Table>
-        </div>)
+        return (
+            <div style={{
+                "overflow-y": "scroll",
+                height: "40vh"
+            }}>
+                <Table striped bordered condensed hover>
+                    <thead>
+                        <tr>
+                            <th>Name (job title)</th>
+                            <th>Age</th>
+                            <th>Nickname</th>
+                            <th>Employee</th>
+                            <th>&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    { persons.map((person) => {
+                        index = persons.indexOf(person);
+                        return (<PersonRow
+                            person={person}
+                            index={index}
+                            key={index}
+                            delete={this.props.delete}
+                        />)
+                    })}
+                    </tbody>
+                </Table>
+            </div>
+        )
     }
 }
