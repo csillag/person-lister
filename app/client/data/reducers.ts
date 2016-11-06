@@ -8,96 +8,103 @@ import {
     DIALOG_OK, DIALOG_CANCEL
 } from './actions';
 
-const appendDump = (state:AppState, persons:Person[]) =>
-      state.dataDump + "===New data:===\n" + JSON.stringify(state.persons);
-
 function mutateState(state:AppState, change:AppState) {
     return Object.assign({}, state, change);
 }
 
-// This is the reducer function
-export function getNextState(state:AppState, action:Action):AppState {
+// Describe how the person list should react to the various actions
+function newPersons(state:Person[], action:Action, editedPerson):Person[] {
     if (!state) {
-        const persons:Person[] = require('../../seed-data/persons');
-        const result:AppState = {
-            persons,
-            dataDump: "",
-            isAdding: false,
-        };
-        return result;
+        return require('../../seed-data/persons');
     }
     let persons:Person[];
-    let dataDump:string;
-    console.log("Action:", action);
     switch (action.type) {
     case REPLACE_PERSONS:
-        return mutateState(state, {
-            persons: action.data,
-        });
+        return action.data;
     case DELETE_PERSON:
-        persons = state.persons.slice();
+        persons = state.slice();
         persons.splice(action.index, 1);
-        dataDump = appendDump(state, persons);
-        return mutateState(state, {
-            persons,
-            dataDump
-        });
-    case SHOW_DIALOG:
-        if (state.isAdding) return state;
-        return mutateState(state, {
-            isAdding: true,
-            editedPerson: {
-                name: "",
-                job: "",
-                age: "",
-                nick: "",
-                employee: false,
-            }
-        });
-    case EDIT_NAME:
-        return mutateState(state, {
-            editedPerson: Object.assign({}, state.editedPerson, {
-                name: action.data
-            })
-        });
-    case EDIT_JOB:
-        return mutateState(state, {
-            editedPerson: Object.assign({}, state.editedPerson, {
-                job: action.data
-            })
-        });
-    case EDIT_AGE:
-        return mutateState(state, {
-            editedPerson: Object.assign({}, state.editedPerson, {
-                age: action.data
-            })
-        });
-    case EDIT_NICK:
-        return mutateState(state, {
-            editedPerson: Object.assign({}, state.editedPerson, {
-                nick: action.data
-            })
-        });
-    case SET_EMPLOYEE:
-        return mutateState(state, {
-            editedPerson: Object.assign({}, state.editedPerson, {
-                employee: action.data
-            })
-        });
+        return persons;
     case DIALOG_OK:
-        persons = state.persons.slice();
-        persons.push(state.editedPerson);
-        dataDump = appendDump(state, persons);
-        return mutateState(state, {
-            persons,
-            isAdding: false,
-            dataDump
-        });
-    case DIALOG_CANCEL:
-        return mutateState(state, {
-            isAdding: false,
-        });        
+        persons = state.slice();
+        persons.push(editedPerson);
+        return persons;
     default:
         return state;
-    }    
+    }
+}
+
+// Describe how the data dump should react to the various actions
+function newDataDump(state:string="", action:Action, persons:Person[]):string {
+    switch (action.type) {
+    case DELETE_PERSON:
+    case DIALOG_OK:
+        return state + "===New data:===\n" + JSON.stringify(persons);
+    default:
+        return state;
+    }
+}
+
+// Describe how the 'is adding' flag should react to the various actions
+function newIsAdding(state:boolean=false, action:Action):boolean {
+    switch (action.type) {
+    case SHOW_DIALOG:
+        return true;
+    case DIALOG_OK:
+    case DIALOG_CANCEL:
+        return false;
+    default:
+        return state;
+    }
+}
+
+// Describe how the fields of the 'add' form should react to the various actions
+function newEditedPerson(state:Person, action:Action):Person {
+    switch (action.type) {
+    case SHOW_DIALOG:
+        return {
+            name: "",
+            job: "",
+            age: "",
+            nick: "",
+            employee: false,
+        }
+    case EDIT_NAME:
+        return Object.assign({}, state, {
+            name: action.data
+        })
+    case EDIT_JOB:
+        return Object.assign({}, state, {
+            job: action.data
+        })
+    case EDIT_AGE:
+        return Object.assign({}, state, {
+            age: action.data
+        })
+    case EDIT_NICK:
+        return Object.assign({}, state, {
+            nick: action.data
+        })
+    case SET_EMPLOYEE:
+        return Object.assign({}, state, {
+            employee: action.data
+        })
+    default:
+        return state;
+    }
+}
+
+// This is the reducer function, which combines the behaviours of the
+// different components of the application
+export function getNextState(state:AppState={}, action:Action):AppState {
+    const persons = newPersons(state.persons, action, state.editedPerson);
+    const dataDump = newDataDump(state.dataDump, action, persons);
+    const isAdding = newIsAdding(state.isAdding, action);
+    const editedPerson = newEditedPerson(state.editedPerson, action);
+    return {
+        persons,
+        dataDump,
+        isAdding,
+        editedPerson
+    }
 };
