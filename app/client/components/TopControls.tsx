@@ -1,12 +1,12 @@
 import * as React from 'react';
+import { Panel, Button } from 'react-bootstrap';
 
-import { AddButton, AddButtonProps } from './AddButton';
-
-export interface TopControlsProps extends AddButtonProps {
+export interface TopControlsProps {
+    add?():void;
 }
 
 export const TopControls = (props:TopControlsProps) => (
-    <div>
-        <AddButton add={ props.add } />
-    </div>
+    <Panel>
+        <Button onClick={ props.add }>Add</Button>
+    </Panel>
 );

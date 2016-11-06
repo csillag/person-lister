@@ -1,7 +1,7 @@
 import * as React from 'react';
+import { Table } from 'react-bootstrap';
 
 import { Person } from '../data/Person';
-
 import { PersonRow } from './PersonRow';
 
 export interface PersonTableProps {
@@ -15,7 +15,7 @@ export class PersonTable extends React.Component<PersonTableProps,{}> {
         const persons = this.props.persons
         let index:number;
         return (<div>
-            <table>
+            <Table striped bordered condensed hover>
                 <thead>
                     <tr>
                         <th>Name (job title)</th>
@@ -36,7 +36,7 @@ export class PersonTable extends React.Component<PersonTableProps,{}> {
                     />)
                 })}
                 </tbody>
-                </table>
-                </div>)
+            </Table>
+        </div>)
     }
 }

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Provider } from 'react-redux'
+import { PageHeader, Col } from 'react-bootstrap';
 
 import { store } from '../data/store';
 
@@ -11,21 +12,16 @@ import { AddDialogContainer } from './AddDialogContainer';
 
 // This React component represents the whole application
 export const App = () => (
-        <Provider store={store}>
-            <div>
-                <GithubRibbon url="csillag/person-lister" />
-                <div className="panel-heading">
-                    <h3 className="panel-title">csillag's Person Lister</h3>
-                </div>
-
-                <div className="col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3">
-                    <TopControlsContainer />
-                    <PersonTableContainer />
-                    <DataDumpContainer />
-                    <AddDialogContainer />
-                </div>
-                
-
-            </div>
-        </Provider>
+    <Provider store={store}>
+        <div>
+            <GithubRibbon url="csillag/person-lister" />
+            <PageHeader>csillag's Person Lister</PageHeader>
+            <Col xs={10} xsOffset={1} md={6} mdOffset={3}>
+                <TopControlsContainer />
+                <PersonTableContainer />
+                <DataDumpContainer />
+                <AddDialogContainer />
+            </Col>
+        </div>
+    </Provider>
 )
