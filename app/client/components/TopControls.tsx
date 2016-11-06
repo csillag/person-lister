@@ -6,7 +6,7 @@ export interface TopControlsProps {
 }
 
 export const TopControls = (props:TopControlsProps) => (
-    <ButtonToolbar style={{ padding: '1em 0' }}>
+    <ButtonToolbar id="top-controls">
         <Button onClick={ props.add }>Add</Button>
     </ButtonToolbar>
 );

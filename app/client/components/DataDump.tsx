@@ -12,14 +12,11 @@ export class DataDump extends React.Component<DataDumpProps,{}> {
 
     render() {
         return (
-            <Form style={{
-                height: "35vh",
-                paddingTop: "1em"
-            }}>
-                <FormGroup style={{ height: "100%"}}>
+            <Form id="dump-form">
+                <FormGroup className="full-height">
                     <ControlLabel>Data Dump</ControlLabel>
                     <FormControl
-                        style={{ height: "100%" }}
+                        className="full-height"
                         componentClass="textarea"
                         placeholder="No change yet."
                         value={ this.props.dump }

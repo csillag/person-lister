@@ -15,10 +15,7 @@ export class PersonTable extends React.Component<PersonTableProps,{}> {
         const persons = this.props.persons
         let index:number;
         return (
-            <div style={{
-                "overflowY": "scroll",
-                height: "40vh"
-            }}>
+            <div id="main-table-wrapper">
                 <Table striped bordered condensed hover>
                     <thead>
                         <tr>
