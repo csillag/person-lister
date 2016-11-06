@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {
-    Button, Col, Modal,
+    Button, Col, Panel,
     Form, FormGroup, FormControl, ControlLabel, Checkbox
 } from 'react-bootstrap';
 
@@ -10,19 +10,22 @@ export interface DataDumpProps {
 
 export class DataDump extends React.Component<DataDumpProps,{}> {
 
+    private endMarker: any;
+
+    componentDidUpdate(prevProps) {
+        if (this.props.dump != prevProps.dump) this.endMarker.scrollIntoView();
+    }
+
+    getHtmlDump() {
+        return { __html: this.props.dump.replace(/\n/g, "<br />") }
+    }
+
     render() {
         return (
-            <Form id="dump-form">
-                <FormGroup className="full-height">
-                    <ControlLabel>Data Dump</ControlLabel>
-                    <FormControl
-                        className="full-height"
-                        componentClass="textarea"
-                        placeholder="No change yet."
-                        value={ this.props.dump }
-                    />
-                </FormGroup>
-            </Form>
+            <Panel id="dumping-panel" header="Data Dump">
+                <div dangerouslySetInnerHTML={this.getHtmlDump()} />
+                <span ref={ (input) => this.endMarker = input} >&nbsp;</span>
+            </Panel>
         )
     }
 }

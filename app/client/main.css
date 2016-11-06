@@ -54,7 +54,7 @@
 }
 
 #top-controls {
-    padding: 1em 0;
+    margin-bottom: 1em;
 }
 
 #main-table-wrapper {
@@ -62,11 +62,8 @@
     height: 40vh;
 }
 
-#dump-form {
+#dumping-panel {
     height: 35vh;
-    padding-top: 1em;
-}
-
-.full-height {
-    height: 100% !important;
+    margin-top: 1em;
+    overflow-y: scroll;
 }

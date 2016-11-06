@@ -39,7 +39,7 @@ function newDataDump(state:string="", action:Action, persons:Person[]):string {
     switch (action.type) {
     case DELETE_PERSON:
     case DIALOG_OK:
-        return state + "===New data:===\n" + JSON.stringify(persons);
+        return state + "===New data:===\n" + JSON.stringify(persons) + "\n";
     default:
         return state;
     }
