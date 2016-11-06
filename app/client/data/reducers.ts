@@ -34,12 +34,21 @@ function newPersons(state:Person[], action:Action, editedPerson):Person[] {
     }
 }
 
+// Dump the data about the persons in the exact same format as the example
+function getDump(persons:Person[]):string {
+    const lines = persons
+          .map((p) => JSON.stringify(p, null, " "))  // Get a string dump
+          .map((p) => p.replace(/\n/g, ""))          // get rid of newlines
+          .map((p) => p.replace(/\": /g, "\":"))     // get rid of some extra spaces
+    return "===New data:===\n" + "[" + lines.join(",\n") + "]\n";
+}
+
 // Describe how the data dump should react to the various actions
 function newDataDump(state:string="", action:Action, persons:Person[]):string {
     switch (action.type) {
     case DELETE_PERSON:
     case DIALOG_OK:
-        return state + "===New data:===\n" + JSON.stringify(persons) + "\n";
+        return state + getDump(persons);
     default:
         return state;
     }
