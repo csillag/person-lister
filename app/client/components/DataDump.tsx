@@ -14,7 +14,7 @@ export class DataDump extends React.Component<DataDumpProps,{}> {
         return (
             <Form style={{
                 height: "35vh",
-                "padding-top": "1em"
+                paddingTop: "1em"
             }}>
                 <FormGroup style={{ height: "100%"}}>
                     <ControlLabel>Data Dump</ControlLabel>
