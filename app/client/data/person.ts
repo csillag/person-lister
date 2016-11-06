@@ -1,11 +1,11 @@
 
 export interface Person {
-    getId():string;
-    getName():string;
-    getJob():string;
-    getAge():number;
-    getNick():string;
-    isEmployee():boolean;
+    id:string;
+    name:string;
+    job:string;
+    age:number;
+    nick:string;
+    employee:boolean;
 
     getDump():string;
 }

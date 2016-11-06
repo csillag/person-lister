@@ -8,14 +8,14 @@ export const SHOW_DIALOG = "SHOW_DIALOG"
 // Generic type to describe all actions
 export interface Action {
     type: string;
-    id?: string;
+    index?: number;
     data?: any;
 }
 
 // === Action generator functions ===
 
-export function deletePerson(id:string):Action {
-    return { type: DELETE_PERSON, id }
+export function deletePerson(index:number):Action {
+    return { type: DELETE_PERSON, index }
 }
 
 export function replacePersons(persons):Action {

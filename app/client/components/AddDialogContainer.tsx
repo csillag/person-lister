@@ -7,7 +7,7 @@ import { AddDialog, AddDialogProps } from './AddDialog';
 
 function mapStateToProps(state:AppState):AddDialogProps {
     return {
-        shown: state.isAdding(),
+        shown: state.isAdding,
     }
 }
 

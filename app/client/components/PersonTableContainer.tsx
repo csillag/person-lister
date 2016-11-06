@@ -7,13 +7,13 @@ import { PersonTable, PersonTableProps } from './PersonTable';
 
 function mapStateToProps(state:AppState):PersonTableProps {
     return {
-        persons: state.getPersons()
+        persons: state.persons
     }
 }
 
 function mapDispatchToProps(dispatch, foo, bar):PersonTableProps {
     return {
-        delete: (id:string) => { dispatch(deletePerson(id)) },
+        delete: (index:number) => { dispatch(deletePerson(index)) },
     }
 }
 

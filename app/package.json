@@ -7,7 +7,6 @@
   "dependencies": {
     "axios": "^0.15.0",
     "classnames": "^2.2.5",
-    "immutable": "^3.8.1",
     "meteor-build-client": "^0.4.1",
     "meteor-node-stubs": "~0.2.0",
     "react": "^15.3.2",

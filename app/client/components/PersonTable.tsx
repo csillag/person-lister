@@ -1,18 +1,19 @@
 import * as React from 'react';
 
 import { Person } from '../data/Person';
-import { PersonList } from '../data/wrappers';
 
 import { PersonRow } from './PersonRow';
 
 export interface PersonTableProps {
-    persons?: PersonList;
-    delete?(id:string):void;
+    persons?: Person[];
+    delete?(index:number):void;
 }
 
 export class PersonTable extends React.Component<PersonTableProps,{}> {
 
     render() {
+        const persons = this.props.persons
+        let index:number;
         return (<div>
             <table>
                 <thead>
@@ -25,13 +26,15 @@ export class PersonTable extends React.Component<PersonTableProps,{}> {
                     </tr>
                 </thead>
                 <tbody>
-                { this.props.persons.map((person) => (
-                    <PersonRow
+                { persons.map((person) => {
+                    index = persons.indexOf(person);
+                    return (<PersonRow
                         person={person}
-                        key={person.getId()}
+                        index={index}
+                        key={index}
                         delete={this.props.delete}
-                    />
-                )) }
+                    />)
+                })}
                 </tbody>
                 </table>
                 </div>)
