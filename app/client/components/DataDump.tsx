@@ -1,4 +1,8 @@
 import * as React from 'react';
+import {
+    Button, Col, Modal,
+    Form, FormGroup, FormControl, ControlLabel, Checkbox
+} from 'react-bootstrap';
 
 export interface DataDumpProps {
     dump:string;
@@ -7,12 +11,21 @@ export interface DataDumpProps {
 export class DataDump extends React.Component<DataDumpProps,{}> {
 
     render() {
-        return (<div>
-                <div>Data Dump</div>
-                <textarea
-                    value={ this.props.dump }
-                    readOnly="true"
-                />
-                </div>)
+        return (
+            <Form style={{
+                height: "35vh",
+                "padding-top": "1em"
+            }}>
+                <FormGroup style={{ height: "100%"}}>
+                    <ControlLabel>Data Dump</ControlLabel>
+                    <FormControl
+                        style={{ height: "100%" }}
+                        componentClass="textarea"
+                        placeholder="No change yet."
+                        value={ this.props.dump }
+                    />
+                </FormGroup>
+            </Form>
+        )
     }
 }
