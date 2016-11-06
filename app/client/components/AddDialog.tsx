@@ -28,6 +28,8 @@ export class AddDialog extends React.Component<AddDialogProps, {}> {
         this.onEditAge = this.onEditAge.bind(this);
         this.onEditNick = this.onEditNick.bind(this);
         this.onSetEmployee = this.onSetEmployee.bind(this);
+        this.onKeyUp = this.onKeyUp.bind(this);
+        this.isValid = this.isValid.bind(this);
     }
 
     onEditName(e) { this.props.editName(e.target.value); }
@@ -35,8 +37,10 @@ export class AddDialog extends React.Component<AddDialogProps, {}> {
     onEditAge(e) { this.props.editAge(e.target.value); }
     onEditNick(e) { this.props.editNick(e.target.value); }
     onSetEmployee(e) { this.props.setEmployee(e.target.checked); }
+    onKeyUp(event) { if ((event.key == "Enter") && this.isValid()) this.props.ok(); }
 
-    isAcceptable(person:Person):boolean {
+    isValid():boolean {
+        const person = this.props.person;
         return !!(person && person.name && person.age)
     }
 
@@ -47,7 +51,7 @@ export class AddDialog extends React.Component<AddDialogProps, {}> {
         </Modal.Header>
 
         <Modal.Body>
-            { this.props.person && <Form horizontal>
+            { this.props.person && <Form horizontal onKeyUp={this.onKeyUp}>
                 <FormGroup>
                     <Col componentClass={ControlLabel} sm={2}>
                         Name*
@@ -70,7 +74,7 @@ export class AddDialog extends React.Component<AddDialogProps, {}> {
                             placeholder="Please enter job title"
                             value={this.props.person.job}
                             onChange={this.onEditJob}
-                        />
+                    />
                     </Col>
                 </FormGroup>
 
@@ -116,7 +120,7 @@ export class AddDialog extends React.Component<AddDialogProps, {}> {
 
         <Modal.Footer>
             <Button
-                disabled={!this.isAcceptable(this.props.person)}
+                disabled={!this.isValid()}
                 onClick={this.props.ok}
                 bsStyle="primary"
             >
