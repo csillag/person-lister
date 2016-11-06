@@ -1,11 +1,8 @@
 
 export interface Person {
-    id:string;
     name:string;
     job:string;
-    age:number;
+    age:string;
     nick:string;
     employee:boolean;
-
-    getDump():string;
 }

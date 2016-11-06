@@ -2,7 +2,10 @@
 
 import { Person } from './person';
 import { AppState } from './state';
-import { Action, REPLACE_PERSONS, DELETE_PERSON, SHOW_DIALOG } from './actions';
+import {
+    Action, REPLACE_PERSONS, DELETE_PERSON, SHOW_DIALOG,
+    DIALOG_OK, DIALOG_CANCEL
+} from './actions';
 
 const appendDump = (state:AppState, persons:Person[]) =>
       state.dataDump + "===New data:===\n" + JSON.stringify(state.persons);
@@ -22,14 +25,15 @@ export function getNextState(state:AppState, action:Action):AppState {
         };
         return result;
     }
-//    console.log("Action:", action);
+    let persons:Person[];
+    console.log("Action:", action);
     switch (action.type) {
     case REPLACE_PERSONS:
         return mutateState(state, {
             persons: action.data,
         });
     case DELETE_PERSON:
-        const persons = state.persons.slice();
+        persons = state.persons.slice();
         persons.splice(action.index, 1);
         const dataDump = appendDump(state, persons);
         return mutateState(state, {
@@ -39,7 +43,25 @@ export function getNextState(state:AppState, action:Action):AppState {
     case SHOW_DIALOG:
         return mutateState(state, {
             isAdding: true,
+            editedPerson: {
+                name: "Please enter name",
+                job: "Please enter job title",
+                age: "Please enter age",
+                nick: "Please enter nickname",
+                employee: false,
+            }
         });
+    case DIALOG_OK:
+        persons = state.persons.slice();
+        persons.push(state.editedPerson);
+        return mutateState(state, {
+            persons,
+            isAdding: false,
+        });
+    case DIALOG_CANCEL:
+        return mutateState(state, {
+            isAdding: false,
+        });        
     default:
         return state;
     }    

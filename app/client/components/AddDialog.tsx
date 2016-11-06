@@ -17,8 +17,11 @@ export interface AddDialogProps {
 export class AddDialog extends React.Component<AddDialogProps,{}> {
     render() {
         if (!this.props.shown) return null;
-        return (
-                <div>Add dialog</div>
-        )
+        return (<div>
+                <h3>Add dialog</h3>
+                {JSON.stringify(this.props.person)}
+                <button onClick={this.props.ok}>OK</button>
+                <button onClick={this.props.cancel}>Cancel</button>
+        </div>)
     }
 }
