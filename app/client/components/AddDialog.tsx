@@ -1,4 +1,5 @@
 import * as React from 'react';
+const ReactDOM = require('react-dom');
 import {
     Button, Col, Modal,
     Form, FormGroup, FormControl, ControlLabel, Checkbox
@@ -44,6 +45,14 @@ export class AddDialog extends React.Component<AddDialogProps, {}> {
         return !!(person && person.name && person.age)
     }
 
+    componentDidUpdate(prevProps) {
+        // If we have just shown the dialog
+        if (this.props.shown && !prevProps.shown) {
+            // Focus in the name field
+            ReactDOM.findDOMNode(this.refs["name"]).focus();
+        }
+    }
+
     render() { return (
     <Modal show={this.props.shown} onHide={this.props.cancel}>
         <Modal.Header>
@@ -61,6 +70,7 @@ export class AddDialog extends React.Component<AddDialogProps, {}> {
                             placeholder="Please enter name (required)"
                             value={this.props.person.name}
                             onChange={this.onEditName}
+                            ref="name"
                         />
                     </Col>
                 </FormGroup>
