@@ -22,18 +22,18 @@ export class PersonRow extends React.Component<PersonRowProps,{}> {
     render() {
         const person = this.props.person;
         return (<tr>
-            <td>
+            <td className="name-data">
                 { person.name }
                 { person.job && ( <span><br />{person.job}</span> ) }
             </td>
             <td className="age-data">{ person.age }</td>
-            <td>{ person.nick }</td>
-                <td><input
-                    type="checkbox"
-                    checked={ person.employee }
-                    readOnly="true"
-                /></td>
-            <td>
+            <td className="nick-data">{ person.nick }</td>
+            <td className="employee-data"><input
+                type="checkbox"
+                checked={ person.employee }
+                readOnly="true"
+            /></td>
+            <td className="delete-data">
                 <a href="#" onClick={ this.onClick }>
                     Delete
                 </a>

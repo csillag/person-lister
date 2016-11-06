@@ -23,9 +23,9 @@ export class PersonTable extends React.Component<PersonTableProps,{}> {
                     <thead>
                         <tr>
                             <th>Name (job title)</th>
-                            <th>Age</th>
-                            <th>Nickname</th>
-                            <th>Employee</th>
+                            <th className="age-header">Age</th>
+                            <th className="nick-header">Nickname</th>
+                            <th className="employee-header">Employee</th>
                             <th>&nbsp;</th>
                         </tr>
                     </thead>

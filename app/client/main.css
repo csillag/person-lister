@@ -33,3 +33,22 @@
     top: 0; right: 0; border: 0;
 }
 
+.age-header,
+.age-data {
+    text-align: right;
+}
+
+.name-data,
+.age-data,
+.employee-data,
+.nick-data,
+.delete-data {
+    vertical-align: middle !important;    
+}
+
+.employee-header,
+.nick-header,
+.employee-data,
+.delete-data {
+    text-align: center;
+}
