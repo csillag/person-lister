@@ -27,6 +27,7 @@ export function getNextState(state:AppState, action:Action):AppState {
         return result;
     }
     let persons:Person[];
+    let dataDump:string;
     console.log("Action:", action);
     switch (action.type) {
     case REPLACE_PERSONS:
@@ -36,7 +37,7 @@ export function getNextState(state:AppState, action:Action):AppState {
     case DELETE_PERSON:
         persons = state.persons.slice();
         persons.splice(action.index, 1);
-        const dataDump = appendDump(state, persons);
+        dataDump = appendDump(state, persons);
         return mutateState(state, {
             persons,
             dataDump
@@ -86,9 +87,11 @@ export function getNextState(state:AppState, action:Action):AppState {
     case DIALOG_OK:
         persons = state.persons.slice();
         persons.push(state.editedPerson);
+        dataDump = appendDump(state, persons);
         return mutateState(state, {
             persons,
             isAdding: false,
+            dataDump
         });
     case DIALOG_CANCEL:
         return mutateState(state, {
