@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Button, Modal } from 'react-bootstrap';
 
 import { Person } from '../data/person';
 
@@ -16,12 +17,25 @@ export interface AddDialogProps {
 
 export class AddDialog extends React.Component<AddDialogProps,{}> {
     render() {
-        if (!this.props.shown) return null;
-        return (<div>
-                <h3>Add dialog</h3>
-                {JSON.stringify(this.props.person)}
-                <button onClick={this.props.ok}>OK</button>
-                <button onClick={this.props.cancel}>Cancel</button>
-        </div>)
+        return (
+            <Modal show={this.props.shown} onHide={this.props.cancel}>
+                <Modal.Header>
+                    <Modal.Title>Add a new person</Modal.Title>
+                </Modal.Header>
+
+                <Modal.Body>
+                    {JSON.stringify(this.props.person)}
+                </Modal.Body>
+
+                <Modal.Footer>
+                    <Button onClick={this.props.ok} bsStyle="primary">
+                        Ok
+                    </Button>
+                    <Button onClick={this.props.cancel}>
+                        Cancel
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+        )
     }
 }
