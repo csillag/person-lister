@@ -22,7 +22,10 @@ export class PersonRow extends React.Component<PersonRowProps,{}> {
     render() {
         const person = this.props.person;
         return (<tr>
-            <td>{ person.name }</td>
+            <td>
+                { person.name }
+                { person.job && ( <span><br />{person.job}</span> ) }
+            </td>
             <td>{ person.age }</td>
             <td>{ person.nick }</td>
                 <td><input
