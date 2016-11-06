@@ -1,4 +1,5 @@
 import * as React from 'react';
+const ReactCSSTransitionGroup = require('react-addons-css-transition-group')
 import { Table } from 'react-bootstrap';
 
 import { Person } from '../data/Person';
@@ -26,17 +27,21 @@ export class PersonTable extends React.Component<PersonTableProps,{}> {
                             <th>&nbsp;</th>
                         </tr>
                     </thead>
-                    <tbody>
-                    { persons.map((person) => {
-                        index = persons.indexOf(person);
-                        return (<PersonRow
-                            person={person}
-                            index={index}
-                            key={index}
-                            delete={this.props.delete}
-                        />)
-                    })}
-                    </tbody>
+                    <ReactCSSTransitionGroup component="tbody"
+                        transitionName="turnaround"
+                        transitionEnterTimeout={1000}
+                        transitionLeaveTimeout={300}
+                    >
+                        { persons.map((person) => {
+                            index = persons.indexOf(person);
+                            return (<PersonRow
+                                person={person}
+                                index={index}
+                                key={person.id}
+                                delete={this.props.delete}
+                            />)
+                        })}
+                    </ReactCSSTransitionGroup>
                 </Table>
             </div>
         )
