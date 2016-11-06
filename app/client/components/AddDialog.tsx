@@ -36,6 +36,10 @@ export class AddDialog extends React.Component<AddDialogProps, {}> {
     onEditNick(e) { this.props.editNick(e.target.value); }
     onSetEmployee(e) { this.props.setEmployee(e.target.checked); }
 
+    isAcceptable(person:Person):boolean {
+        return !!(person && person.name && person.age)
+    }
+
     render() { return (
     <Modal show={this.props.shown} onHide={this.props.cancel}>
         <Modal.Header>
@@ -46,12 +50,11 @@ export class AddDialog extends React.Component<AddDialogProps, {}> {
             { this.props.person && <Form horizontal>
                 <FormGroup>
                     <Col componentClass={ControlLabel} sm={2}>
-                        Name
+                        Name*
                     </Col>
                     <Col sm={10}>
                         <FormControl
-                            type="text"
-                            placeholder="Please enter name"
+                            placeholder="Please enter name (required)"
                             value={this.props.person.name}
                             onChange={this.onEditName}
                         />
@@ -73,11 +76,11 @@ export class AddDialog extends React.Component<AddDialogProps, {}> {
 
                 <FormGroup>
                     <Col componentClass={ControlLabel} sm={2}>
-                        Age
+                        Age*
                     </Col>
                     <Col sm={10}>
                         <FormControl
-                            placeholder="Please enter age"
+                            placeholder="Please enter age (required)"
                             value={this.props.person.age}
                             onChange={this.onEditAge}
                         />
@@ -112,7 +115,11 @@ export class AddDialog extends React.Component<AddDialogProps, {}> {
         </Modal.Body>
 
         <Modal.Footer>
-            <Button onClick={this.props.ok} bsStyle="primary">
+            <Button
+                disabled={!this.isAcceptable(this.props.person)}
+                onClick={this.props.ok}
+                bsStyle="primary"
+            >
                 Ok
             </Button>
             <Button onClick={this.props.cancel}>
