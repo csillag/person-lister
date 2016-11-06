@@ -8,10 +8,6 @@ import {
     DIALOG_OK, DIALOG_CANCEL
 } from './actions';
 
-function mutateState(state:AppState, change:AppState) {
-    return Object.assign({}, state, change);
-}
-
 // Describe how the person list should react to the various actions
 function newPersons(state:Person[], action:Action, editedPerson):Person[] {
     let persons:Person[];
@@ -39,8 +35,8 @@ function newPersons(state:Person[], action:Action, editedPerson):Person[] {
 // Dump the data about the persons in the exact same format as the example
 function getDump(persons:Person[]):string {
     const lines = persons
-          .map((p) => dropIdFromPerson(p))
-          .map((p) => JSON.stringify(p, null, " "))  // Get a string dump
+          .map((p) => dropIdFromPerson(p))           // Get rid of our ID
+          .map((p) => JSON.stringify(p, null, " "))  // Conert to a string dump
           .map((p) => p.replace(/\n/g, ""))          // get rid of newlines
           .map((p) => p.replace(/\": /g, "\":"))     // get rid of some extra spaces
     return "===New data:===\n" + "[" + lines.join(",\n") + "]\n";
