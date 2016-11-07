@@ -85,6 +85,13 @@ together. So I just went with that.
 Still, the application can be deployed as a purely client-side application,
 without any kind of server support.
 
+### Visualization tool
+
+For creating the graph, I used
+[Chartist.js](http://gionkunz.github.io/chartist-js/) (via it's
+[React](http://fraserxu.me/react-chartist/) and
+[Meteor](https://github.com/mfpierre/meteor-chartist-js) integrations.)
+
 ### Building and deployment
 
 Since we don't use any backend functionality, we can simply deploy the
