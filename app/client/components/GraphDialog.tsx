@@ -1,11 +1,9 @@
 import * as React from 'react';
-import {
-    Button, Col, Modal,
-    Form, FormGroup, FormControl, ControlLabel, Checkbox
-} from 'react-bootstrap';
-
+import { Button, Modal } from 'react-bootstrap';
 
 import { Person } from '../data/person';
+
+import { Graph } from './Graph';
 
 export interface GraphDialogProps {
     shown?: boolean;
@@ -23,7 +21,7 @@ export class GraphDialog extends React.Component<GraphDialogProps, {}> {
                 </Modal.Header>
 
                 <Modal.Body>
-                    <div>Some cool graph here</div>
+                    <Graph persons={this.props.persons} />
                 </Modal.Body>
 
                 <Modal.Footer>
