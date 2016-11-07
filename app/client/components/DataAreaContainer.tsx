@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 
 import { AppState } from '../data/state';
-import { deletePerson } from '../data/actions';
+import { loadPersons, deletePerson } from '../data/actions';
 
 import { DataArea, DataAreaProps } from './DataArea';
 
@@ -15,6 +15,7 @@ function mapStateToProps(state:AppState):DataAreaProps {
 
 function mapDispatchToProps(dispatch, foo, bar):DataAreaProps {
     return {
+        load: () => { dispatch(loadPersons()) },
         delete: (index:number) => { dispatch(deletePerson(index)) },
     }
 }
