@@ -1,7 +1,7 @@
 import { Person } from './person';
 
 export interface AppState {
-    loading?: boolean;
+    isLoading?: boolean;
     persons?: Person[];
     dataDump?: string;
     isAdding?: boolean;

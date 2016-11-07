@@ -1,8 +1,10 @@
 
 // === Our store supports the following actions ===
 
+export const LOAD_PERSONS = "LOAD_PERSONS"
+export const LOAD_PERSONS_SUCCESS = "LOAD_PERSONS_SUCCESS"
+export const LOAD_PERSONS_FAIL = "LOAD_PERSONS_FAIL"
 export const DELETE_PERSON = "DELETE_PERSON"
-export const REPLACE_PERSONS = "REPLACE_PERSONS"
 export const SHOW_DIALOG = "SHOW_DIALOG"
 export const DIALOG_OK = "DIALOG_OK"
 export const DIALOG_CANCEL = "DIALOG_CANCEL"
@@ -17,16 +19,19 @@ export interface Action {
     type: string;
     index?: number;
     data?: any;
+    payload?: any;
 }
 
 // === Action generator functions ===
 
-export function deletePerson(index:number):Action {
-    return { type: DELETE_PERSON, index }
+export function loadPersons():Action {
+    return { type: LOAD_PERSONS, payload: { request: {
+        url: "persons.json"
+    } } }
 }
 
-export function replacePersons(persons):Action {
-    return { type: REPLACE_PERSONS, data: persons }
+export function deletePerson(index:number):Action {
+    return { type: DELETE_PERSON, index }
 }
 
 export function showDialog():Action { return { type: SHOW_DIALOG } }

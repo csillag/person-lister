@@ -3,22 +3,33 @@
 import { Person, createPersonId, addIdToPerson, dropIdFromPerson } from './person';
 import { AppState } from './state';
 import {
-    Action, REPLACE_PERSONS, DELETE_PERSON, SHOW_DIALOG,
+    Action,
+    LOAD_PERSONS, LOAD_PERSONS_SUCCESS, LOAD_PERSONS_FAIL,
+    DELETE_PERSON, SHOW_DIALOG,
     EDIT_NAME, EDIT_JOB, EDIT_AGE, EDIT_NICK, SET_EMPLOYEE,
     DIALOG_OK, DIALOG_CANCEL
 } from './actions';
 
+function newIsLoading(state:boolean, action:Action):boolean {
+    switch (action.type) {
+    case LOAD_PERSONS:
+        return true;
+    case LOAD_PERSONS_SUCCESS:
+    case LOAD_PERSONS_FAIL:
+        return false;
+    default:
+        return state;
+    }
+}
+
 // Describe how the person list should react to the various actions
 function newPersons(state:Person[], action:Action, editedPerson):Person[] {
     let persons:Person[];
-    if (!state) {
-        persons = require('../../seed-data/persons');
+    switch (action.type) {
+    case LOAD_PERSONS_SUCCESS:
+        persons = action.payload.data;
         persons.forEach(addIdToPerson);
         return persons;
-    }
-    switch (action.type) {
-    case REPLACE_PERSONS:
-        return action.data;
     case DELETE_PERSON:
         persons = state.slice();
         persons.splice(action.index, 1);
@@ -95,11 +106,13 @@ function newEditedPerson(state:Person, action:Action):Person {
 // This is the reducer function, which combines the behaviours of the
 // different components of the application
 export function getNextState(state:AppState={}, action:Action):AppState {
+    const isLoading = newIsLoading(state.isLoading, action);
     const persons = newPersons(state.persons, action, state.editedPerson);
     const dataDump = newDataDump(state.dataDump, action, persons);
     const isAdding = newIsAdding(state.isAdding, action);
     const editedPerson = newEditedPerson(state.editedPerson, action);
     return {
+        isLoading,
         persons,
         dataDump,
         isAdding,
