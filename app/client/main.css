@@ -92,3 +92,11 @@
     text-align: center;
     font-size: 200%;
 }
+
+.ct-series-a .ct-bar {
+    stroke: green;
+}
+
+.ct-series-b .ct-bar {
+    stroke: orange;
+}

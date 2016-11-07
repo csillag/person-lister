@@ -7,4 +7,5 @@ export interface AppState {
     dataDump?: string;
     isAdding?: boolean;
     editedPerson?: Person;
+    showGraph?: boolean;
 }

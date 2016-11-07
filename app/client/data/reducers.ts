@@ -7,7 +7,8 @@ import {
     LOAD_PERSONS, LOAD_PERSONS_SUCCESS, LOAD_PERSONS_FAIL,
     DELETE_PERSON, SHOW_DIALOG,
     EDIT_NAME, EDIT_JOB, EDIT_AGE, EDIT_NICK, SET_EMPLOYEE,
-    DIALOG_OK, DIALOG_CANCEL
+    DIALOG_OK, DIALOG_CANCEL,
+    SHOW_GRAPH, HIDE_GRAPH
 } from './actions';
 
 // Let's assume we got some response from the server.
@@ -124,6 +125,19 @@ function newEditedPerson(state:Person, action:Action):Person {
     }
 }
 
+// Describe how the 'showGraph' flag should react to the various actions
+function newShowGraph(state:boolean=false, action:Action):boolean {
+    switch (action.type) {
+    case SHOW_GRAPH:
+        return true;
+    case HIDE_GRAPH:
+        return false;
+    default:
+        return state;
+    }
+}
+
+
 // This is the reducer function, which combines the behaviours of the
 // different components of the application
 export function getNextState(state:AppState={}, action:Action):AppState {
@@ -133,12 +147,14 @@ export function getNextState(state:AppState={}, action:Action):AppState {
     const dataDump = newDataDump(state.dataDump, action, persons);
     const isAdding = newIsAdding(state.isAdding, action);
     const editedPerson = newEditedPerson(state.editedPerson, action);
+    const showGraph = newShowGraph(state.showGraph, action);
     return {
         isLoading,
         dataMessage,
         persons,
         dataDump,
         isAdding,
-        editedPerson
+        editedPerson,
+        showGraph
     }
 };
