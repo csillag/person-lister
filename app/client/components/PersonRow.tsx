@@ -1,3 +1,5 @@
+// This component represents one row in the person table.
+
 import * as React from 'react';
 
 import { Person } from '../data/Person';

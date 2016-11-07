@@ -1,3 +1,5 @@
+// This component defines the "add a new person" dialog box.
+
 import * as React from 'react';
 const ReactDOM = require('react-dom');
 import {

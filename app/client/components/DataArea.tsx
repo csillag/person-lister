@@ -1,3 +1,7 @@
+// This react component represents the main data area,
+// which either shows the person table, or some message
+// about the state of the application.
+
 import * as React from 'react';
 import { Button } from 'react-bootstrap';
 

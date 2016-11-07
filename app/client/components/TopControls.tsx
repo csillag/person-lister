@@ -1,3 +1,5 @@
+// This component represents the control buttons on the top of the app.
+
 import * as React from 'react';
 import { Panel, Button, ButtonToolbar } from 'react-bootstrap';
 

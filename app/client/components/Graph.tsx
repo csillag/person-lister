@@ -1,3 +1,5 @@
+// This component represents the actual graph we are showing.
+
 import * as React from 'react';
 
 const ChartistGraph = require('react-chartist')

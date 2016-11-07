@@ -1,3 +1,5 @@
+// This component represents the Data Dump window.
+
 import * as React from 'react';
 import {
     Button, Col, Panel,

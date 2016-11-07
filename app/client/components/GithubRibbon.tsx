@@ -1,3 +1,5 @@
+// This component represents the "Fork me on GitHub" ribbon
+
 import * as React from 'react';
 
 interface GithubRibbonProps {

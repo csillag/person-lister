@@ -1,3 +1,5 @@
+// This component represents a "loading..." spinner animation.
+
 import * as React from 'react';
 import * as classNames from 'classnames';
 

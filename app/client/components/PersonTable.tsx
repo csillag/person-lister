@@ -1,3 +1,5 @@
+// This component represents the table of persons
+
 import * as React from 'react';
 const ReactCSSTransitionGroup = require('react-addons-css-transition-group')
 import { Table } from 'react-bootstrap';

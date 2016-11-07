@@ -1,3 +1,6 @@
+// This is a container for the DataArea component,
+// connecting it to the data/behavior defined in Redux.
+
 import { connect } from 'react-redux'
 
 import { AppState } from '../data/state';
