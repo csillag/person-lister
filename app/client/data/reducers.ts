@@ -10,6 +10,16 @@ import {
     DIALOG_OK, DIALOG_CANCEL
 } from './actions';
 
+// Let's assume we got some response from the server.
+// But is that really O.K. ?
+function getErrorsInResponse(response:any):string {
+    if (response.status != 200) return response.statusText;
+    if (!Array.isArray(response.data)) {
+        return "The loaded data is in the wrong format.";
+    }
+    return null;
+}
+
 function newIsLoading(state:boolean, action:Action):boolean {
     switch (action.type) {
     case LOAD_PERSONS:
@@ -26,7 +36,7 @@ function newDataMessage(state:string, action:Action):string {
     if (state == null) { return "No data has been loaded yet." }
     switch (action.type) {
     case LOAD_PERSONS_SUCCESS:
-        return "";
+        return getErrorsInResponse(action.payload);
     default:
         return state;
     }
@@ -37,6 +47,7 @@ function newPersons(state:Person[], action:Action, editedPerson):Person[] {
     let persons:Person[];
     switch (action.type) {
     case LOAD_PERSONS_SUCCESS:
+        if (getErrorsInResponse(action.payload)) return state;
         persons = action.payload.data;
         persons.forEach(addIdToPerson);
         return persons;
