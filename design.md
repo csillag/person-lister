@@ -87,3 +87,16 @@ without any kind of server support.
 
 ### Building and deployment
 
+Since we don't use any backend functionality, we can simply deploy the
+app using a static HTML hosting solution, without running any kind of server
+code.
+
+To prepare the application for deployment, I use
+[Meteor Build Client](https://github.com/frozeman/meteor-build-client),
+which allows just that. The resulting static build is stored in the `docs`
+directory, which is used to power the (free)
+[GitHub Pages](https://pages.github.com/) installation of the app,
+available here:
+
+https://csillag.github.io/person-lister/index.html
+
