@@ -22,6 +22,16 @@ function newIsLoading(state:boolean, action:Action):boolean {
     }
 }
 
+function newDataMessage(state:string, action:Action):string {
+    if (state == null) { return "No data has been loaded yet." }
+    switch (action.type) {
+    case LOAD_PERSONS_SUCCESS:
+        return "";
+    default:
+        return state;
+    }
+}
+
 // Describe how the person list should react to the various actions
 function newPersons(state:Person[], action:Action, editedPerson):Person[] {
     let persons:Person[];
@@ -107,12 +117,14 @@ function newEditedPerson(state:Person, action:Action):Person {
 // different components of the application
 export function getNextState(state:AppState={}, action:Action):AppState {
     const isLoading = newIsLoading(state.isLoading, action);
+    const dataMessage = newDataMessage(state.dataMessage, action);
     const persons = newPersons(state.persons, action, state.editedPerson);
     const dataDump = newDataDump(state.dataDump, action, persons);
     const isAdding = newIsAdding(state.isAdding, action);
     const editedPerson = newEditedPerson(state.editedPerson, action);
     return {
         isLoading,
+        dataMessage,
         persons,
         dataDump,
         isAdding,

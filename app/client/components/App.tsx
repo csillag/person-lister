@@ -6,7 +6,7 @@ import { store } from '../data/store';
 
 import { GithubRibbon } from './GithubRibbon';
 import { TopControlsContainer } from './TopControlsContainer';
-import { PersonTableContainer } from './PersonTableContainer';
+import { DataAreaContainer } from './DataAreaContainer';
 import { DataDumpContainer } from './DataDumpContainer';
 import { AddDialogContainer } from './AddDialogContainer';
 
@@ -18,7 +18,7 @@ export const App = () => (
             <PageHeader>csillag's Person Lister</PageHeader>
             <Col xs={10} xsOffset={1} md={6} mdOffset={3}>
                 <TopControlsContainer />
-                <PersonTableContainer />
+                <DataAreaContainer />
                 <DataDumpContainer />
                 <AddDialogContainer />
             </Col>

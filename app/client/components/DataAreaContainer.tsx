@@ -3,22 +3,23 @@ import { connect } from 'react-redux'
 import { AppState } from '../data/state';
 import { deletePerson } from '../data/actions';
 
-import { PersonTable, PersonTableProps } from './PersonTable';
+import { DataArea, DataAreaProps } from './DataArea';
 
-function mapStateToProps(state:AppState):PersonTableProps {
+function mapStateToProps(state:AppState):DataAreaProps {
     return {
         loading: state.isLoading,
+        message: state.dataMessage,
         persons: state.persons
     }
 }
 
-function mapDispatchToProps(dispatch, foo, bar):PersonTableProps {
+function mapDispatchToProps(dispatch, foo, bar):DataAreaProps {
     return {
         delete: (index:number) => { dispatch(deletePerson(index)) },
     }
 }
 
-export const PersonTableContainer = connect(
+export const DataAreaContainer = connect(
     mapStateToProps,
     mapDispatchToProps
-)(PersonTable);
+)(DataArea);

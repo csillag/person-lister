@@ -57,6 +57,7 @@
     margin-bottom: 1em;
 }
 
+#data-message,
 #main-table-wrapper {
     overflow-y: scroll;
     height: 40vh;
@@ -86,7 +87,7 @@
     color: black;
 }
 
-#no-data-indicator,
+#data-message,
 #loading-indicator {
     text-align: center;
     font-size: 200%;
