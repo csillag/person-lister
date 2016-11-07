@@ -1,4 +1,5 @@
-// The file containes Redux reducer function
+// The file contains Redux reducer function, defining the behavior
+// of the application.
 
 import { Person, createPersonId, addIdToPerson, dropIdFromPerson } from './person';
 import { AppState } from './state';
@@ -12,7 +13,10 @@ import {
 } from './actions';
 
 // Let's assume we got some response from the server.
-// But is that really O.K. ?
+// But is the returned data really O.K. ?
+//
+// If not, return the error string.
+// If everything is OK, return an empty string.
 function getErrorsInResponse(response:any):string {
     if (response.status != 200) return response.statusText;
     if (!Array.isArray(response.data)) {
@@ -21,6 +25,7 @@ function getErrorsInResponse(response:any):string {
     return "";
 }
 
+// Calculate the next state of the "is loading" flag
 function newIsLoading(state:boolean, action:Action):boolean {
     switch (action.type) {
     case LOAD_PERSONS:
@@ -33,6 +38,7 @@ function newIsLoading(state:boolean, action:Action):boolean {
     }
 }
 
+// Calculate the next state of the data  message
 function newDataMessage(state:string, action:Action):string {
     if (state == null) { return "No data has been loaded yet." }
     switch (action.type) {
@@ -138,8 +144,8 @@ function newShowGraph(state:boolean=false, action:Action):boolean {
 }
 
 
-// This is the reducer function, which combines the behaviours of the
-// different components of the application
+// This is the overall reducer function, which combines the behaviours
+// of the different components of the application
 export function getNextState(state:AppState={}, action:Action):AppState {
     const isLoading = newIsLoading(state.isLoading, action);
     const dataMessage = newDataMessage(state.dataMessage, action);

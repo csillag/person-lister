@@ -75,7 +75,7 @@ In the current app, I haven't used any Meteor-specific features or Meteor
 API calls at all, which means that there is no vendor lock-in at all.
 One could easily rebuild the application without Meteor, using a custom
 Webpack configuration, probably without any source change in the application
-code itself.
+code itself, except perhaps the main entry point.
 
 The reason I used Meteor is because it provides a very comfortable
 development environment out of the box, and I already had a template project

@@ -1,13 +1,16 @@
 var shortid = require('shortid');
 
+// This is the data structure of the person.
 export interface Person {
-    id:string;
+    id:string; // This is used only internally
     name:string;
     job:string;
     age:string;
     nick:string;
     employee:boolean;
 }
+
+// Functions for generating, adding and removing IDs to/from persons
 
 export const createPersonId = () => shortid.generate()
 

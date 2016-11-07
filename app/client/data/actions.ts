@@ -26,6 +26,8 @@ export interface Action {
 
 // === Action generator functions ===
 
+// This action will trigger an actual HTTP request,
+// using the axios middleware
 export function loadPersons():Action {
     return { type: LOAD_PERSONS, payload: { request: {
         url: "persons.json"
@@ -36,10 +38,12 @@ export function deletePerson(index:number):Action {
     return { type: DELETE_PERSON, index }
 }
 
+// Managing the visibility "add person" dialog box
 export function showDialog():Action { return { type: SHOW_DIALOG } }
 export function dialogOK():Action { return { type: DIALOG_OK } }
 export function dialogCancel():Action { return { type: DIALOG_CANCEL } }
 
+// Edigint the data in the "add person" dialog box
 export function editName(value:string):Action {
     return { type: EDIT_NAME, data: value }
 }
@@ -60,5 +64,6 @@ export function setEmployee(value:boolean):Action {
     return { type: SET_EMPLOYEE, data: value }
 }
 
+// Managing the visibility of the graph dialog
 export function showGraph():Action { return { type: SHOW_GRAPH } }
 export function hideGraph():Action { return { type: HIDE_GRAPH } }

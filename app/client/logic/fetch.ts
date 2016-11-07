@@ -1,14 +1,15 @@
-// This files describes the proxy we are using to get the data.
+// To load data from the server side, we are using the
+// redux-axios-middleware:
+// https://github.com/svrcekmichal/redux-axios-middleware
+// (Recommended in the Redux documentation, here:
+// http://redux.js.org/docs/introduction/Ecosystem.html#middleware )
 
 import axios from 'axios';
 import axiosMiddleware from 'redux-axios-middleware';
 
 const baseURL = "";
 
-// We are using axios to send our HTTP requests. Here, we prepare the redux middleware for it.
-
 export const fetchMiddleware = axiosMiddleware(axios.create({
     baseURL,
     responseType: 'text'
 }));
-
