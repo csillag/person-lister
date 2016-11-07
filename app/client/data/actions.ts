@@ -13,6 +13,8 @@ export const EDIT_JOB = "EDIT_JOB"
 export const EDIT_AGE = "EDIT_AGE"
 export const EDIT_NICK = "EDIT_NICK"
 export const SET_EMPLOYEE = "EDIT_EMPLOYEE"
+export const SHOW_GRAPH = "SHOW_GRAPH"
+export const HIDE_GRAPH = "HIDE_GRAPH"
 
 // Generic type to describe all actions
 export interface Action {
@@ -57,3 +59,6 @@ export function editNick(value:string):Action {
 export function setEmployee(value:boolean):Action {
     return { type: SET_EMPLOYEE, data: value }
 }
+
+export function showGraph():Action { return { type: SHOW_GRAPH } }
+export function hideGraph():Action { return { type: HIDE_GRAPH } }

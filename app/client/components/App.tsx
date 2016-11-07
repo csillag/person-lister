@@ -9,6 +9,7 @@ import { TopControlsContainer } from './TopControlsContainer';
 import { DataAreaContainer } from './DataAreaContainer';
 import { DataDumpContainer } from './DataDumpContainer';
 import { AddDialogContainer } from './AddDialogContainer';
+import { GraphDialogContainer } from './GraphDialogContainer';
 
 // This React component represents the whole application
 export const App = () => (
@@ -28,6 +29,7 @@ export const App = () => (
                 <DataAreaContainer />
                 <DataDumpContainer />
                 <AddDialogContainer />
+                <GraphDialogContainer />
             </Col>
         </div>
     </Provider>
