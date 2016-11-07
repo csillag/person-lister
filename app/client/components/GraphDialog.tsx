@@ -17,11 +17,17 @@ export class GraphDialog extends React.Component<GraphDialogProps, {}> {
         return (
             <Modal show={this.props.shown} onHide={this.props.hide}>
                 <Modal.Header>
-                    <Modal.Title>Some graph</Modal.Title>
+                    <Modal.Title>Distribution of age</Modal.Title>
                 </Modal.Header>
 
                 <Modal.Body>
                     <Graph persons={this.props.persons} />
+                    <div>
+                        This graph shows the distribution of the age
+                        of the people in the persons list.
+                        (The green bars mark the employees,
+                        the orange ones mark the others on the list.)
+                    </div>
                 </Modal.Body>
 
                 <Modal.Footer>
