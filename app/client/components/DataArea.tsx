@@ -39,7 +39,7 @@ export const DataArea = (props:DataAreaProps) => {
         message={ props.message }
     />
     return <PersonTable
-        persons={props.persons}
+        delete={ props.delete }
+        persons={ props.persons }
     />
 }
-

@@ -17,7 +17,7 @@ function getErrorsInResponse(response:any):string {
     if (!Array.isArray(response.data)) {
         return "The loaded data is in the wrong format.";
     }
-    return null;
+    return "";
 }
 
 function newIsLoading(state:boolean, action:Action):boolean {
