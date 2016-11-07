@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Provider } from 'react-redux'
-import { PageHeader, Col } from 'react-bootstrap';
+import { Col, Navbar } from 'react-bootstrap';
 
 import { store } from '../data/store';
 
@@ -14,8 +14,15 @@ import { AddDialogContainer } from './AddDialogContainer';
 export const App = () => (
     <Provider store={store}>
         <div>
+            <Navbar inverse collapseOnSelect>
+                <Navbar.Header>
+                    <Navbar.Brand>
+                        <a href="#">csillag's Person Lister</a>
+                    </Navbar.Brand>
+                    <Navbar.Toggle />
+                </Navbar.Header>
+            </Navbar>
             <GithubRibbon url="csillag/person-lister" />
-            <PageHeader>csillag's Person Lister</PageHeader>
             <Col xs={10} xsOffset={1} md={6} mdOffset={3}>
                 <TopControlsContainer />
                 <DataAreaContainer />
