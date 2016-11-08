@@ -25,3 +25,8 @@ because of the browsers' cross origin security policies.)
 ## Technical details
 
 See the `design.md` file for more details about the technology behind this project.
+
+   * * *
+
+**Update:** Features that I implement after the deadline live on
+the [post-mortem branch](https://github.com/csillag/person-lister/tree/post-mortem).
