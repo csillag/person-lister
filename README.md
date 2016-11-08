@@ -21,3 +21,7 @@ The resulting static build will be placed in the `docs` directory,
 which you can upload to any static HTML server.
 (Unfortunately, opening it using the `file://` protocol still won't work,
 because of the browsers' cross origin security policies.)
+
+## Technical details
+
+See the `design.md` file for more details about the technology behind this project.
