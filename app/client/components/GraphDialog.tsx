@@ -5,7 +5,8 @@ import { Button, Modal } from 'react-bootstrap';
 
 import { Person } from '../data/person';
 
-import { Graph } from './Graph';
+import { ChartistChart } from './ChartistChart';
+import { ZingChart } from './ZingChart';
 
 export interface GraphDialogProps {
     shown?: boolean;
@@ -23,13 +24,14 @@ export class GraphDialog extends React.Component<GraphDialogProps, {}> {
                 </Modal.Header>
 
                 <Modal.Body>
-                    <Graph persons={this.props.persons} />
+                    <ChartistChart persons={this.props.persons} />
                     <div>
                         This graph shows the distribution of the age
                         of the people in the persons list.
                         (The green bars mark the employees,
                         the orange ones mark the others on the list.)
                     </div>
+                    <ZingChart persons={this.props.persons} />
                 </Modal.Body>
 
                 <Modal.Footer>

@@ -49,7 +49,7 @@ function calculateDistribution(persons:Person[]) {
 }
 
 // Define the component showing the graph
-export const Graph = (props:GraphProps) => {
+export const ChartistChart = (props:GraphProps) => {
     if (!props.persons) return null;
     const chartData = calculateDistribution(props.persons);
     return <ChartistGraph data={chartData} type={'Bar'} />
