@@ -29,4 +29,5 @@ See the `design.md` file for more details about the technology behind this proje
    * * *
 
 **Update:** Features that I implement after the deadline live on
-the [post-mortem branch](https://github.com/csillag/person-lister/tree/post-mortem).
+the [post-mortem branch](https://github.com/csillag/person-lister/tree/post-mortem), and the updated demo is available
+[here](https://csillag.github.io/person-lister-post-mortem/index.html).
