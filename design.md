@@ -90,7 +90,8 @@ without any kind of server support.
 For creating the graph, I used
 [Chartist.js](http://gionkunz.github.io/chartist-js/) (via it's
 [React](http://fraserxu.me/react-chartist/) and
-[Meteor](https://github.com/mfpierre/meteor-chartist-js) integrations.)
+[Meteor](https://github.com/mfpierre/meteor-chartist-js) integrations),
+and [ZingChart](https://www.zingchart.com/).
 
 ### Building and deployment
 
